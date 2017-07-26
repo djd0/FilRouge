@@ -80,7 +80,7 @@
                   </AnchorPane>
                   <Button layoutX="473.0" layoutY="237.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Supprimer" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
                   <Button layoutX="339.0" layoutY="237.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Modifier" AnchorPane.bottomAnchor="20.0" />
-                  <Button layoutX="206.0" layoutY="237.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Ajouter" AnchorPane.bottomAnchor="20.0" />
+                  <Button layoutX="207.0" layoutY="301.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Ajouter" AnchorPane.bottomAnchor="20.0" />
                   <GridPane layoutX="333.0" layoutY="65.0" prefHeight="216.0" prefWidth="280.0" AnchorPane.bottomAnchor="65.0" AnchorPane.rightAnchor="10.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="55.0" />
@@ -136,7 +136,7 @@
                   </GridPane>
                   <Pane focusTraversable="true" layoutX="18.0" layoutY="39.0" prefHeight="100.0" prefWidth="250.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="50.0">
                      <children>
-                        <Box depth="50.0" drawMode="LINE" height="100.0" layoutX="125.0" layoutY="50.0" width="250.0"/>
+                        <Box depth="50.0" drawMode="LINE" height="100.0" layoutX="125.0" layoutY="50.0" width="250.0" />
                         <GridPane layoutX="15.0" layoutY="5.0" prefHeight="90.0" prefWidth="228.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0" prefWidth="155.0" />
