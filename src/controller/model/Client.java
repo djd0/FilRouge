@@ -1,6 +1,11 @@
 package controller.model;
 
-import java.util.ArrayList;
+
+
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 
 
@@ -8,40 +13,140 @@ public class Client extends Personnes {
 
 	
 	// Init du compteur client
-	protected int numeroClient = 0;
+	protected IntegerProperty numeroClient;
+	protected static int numClient = 0;
 	
-	protected String telephone;
-	protected String email;
-	protected String enseigne;
-	protected double siret;
-	protected int nbCommandes;
-	protected Representant numeroRepresentant;
-	
-	//Creation liste
-	static ArrayList<Client> listeClient;
+	protected StringProperty telephone;
+	protected StringProperty email;
+	protected StringProperty enseigne;
+	protected StringProperty siret;
+	protected IntegerProperty nbCommande;
+	protected IntegerProperty numeroRepresentant;
 
-	public Client(String nom, String prenom, String rue, String ville, String pays, int numeroClient, int codePostal,
-				  String telephone, String email, String enseigne, double siret, int nbCommandes,
-				  Representant numeroRepresentant) 
+	
+	//Constructeur
+	public Client(String nom, String prenom, String rue, String ville,
+			String pays, int codePostal, String telephone,
+			String email, String enseigne, String siret, int nbCommande) 
 	{
 		super(nom, prenom, rue, ville, pays, codePostal);
 
-		this.telephone = telephone;
-		this.email = email;
-		this.enseigne = enseigne;
-		this.siret = siret;
-		this.nbCommandes = nbCommandes;
-		this.numeroRepresentant = numeroRepresentant;
+		this.telephone = new SimpleStringProperty(telephone);
+		this.email = new SimpleStringProperty(email);
+		this.enseigne = new SimpleStringProperty(enseigne);
+		this.siret = new SimpleStringProperty(siret);
+		this.nbCommande = new SimpleIntegerProperty(nbCommande);
+		this.numeroRepresentant =  numeroRepresentantProperty();
 		
 		//Incrementation compteur clients
-		numeroClient ++;
-		this.numeroClient = numeroClient;
-		
-		// Instance liste Client
-		listeClient = new ArrayList<Client>();
+		numClient ++;
+		this.numeroClient = new SimpleIntegerProperty(numClient);
+
 	}
 	
+	public Client()
+	{
 	
+	}
+
+
+	//GET / SET
+	public int getNumeroClient() {
+		return numeroClient.get();
+	}
+
+
+	public void setNumeroClient(int numeroClient) {
+		this.numeroClient.set(numeroClient);
+	}
+	
+	public IntegerProperty numeroClientProperty() {
+		return numeroClient;
+	}
+
+
+	public String getTelephone() {
+		return telephone.get();
+	}
+
+
+	public void setTelephone(String telephone) {
+		this.telephone.set(telephone);
+	}
+	
+	public StringProperty telephoneProperty() {
+		return telephone;
+	}
+
+
+	public String getEmail() {
+		return email.get();
+	}
+
+
+	public void setEmail(String email) {
+		this.email.set(email);
+	}
+	
+	public StringProperty emailProperty() {
+		return email;
+	}
+
+
+	public String getEnseigne() {
+		return enseigne.get();
+	}
+
+
+	public void setEnseigne(String enseigne) {
+		this.enseigne.set(enseigne);
+	}
+	
+	public StringProperty enseigneProperty() {
+		return enseigne;
+	}
+
+
+	public String getSiret() {
+		return siret.get();
+	}
+
+
+	public void setSiret(String siret) {
+		this.siret.set(siret);
+	}
+
+	public StringProperty siretProperty() {
+		return siret;
+	}
+
+	public int getNbCommande() {
+		return nbCommande.get();
+	}
+
+
+	public void setNbCommande(int nbCommandes) {
+		this.nbCommande.set(nbCommandes);
+	}
+	
+	public IntegerProperty nbCommandeProperty() {
+		return nbCommande;
+	}
+
+	public int getNumeroRepresentant() {
+		return numeroRepresentant.get();
+	}
+
+
+	public void setNumeroRepresentant(int numeroRepresentant) {
+		this.numeroRepresentant.set(numeroRepresentant);
+	}
+	
+	public IntegerProperty numeroRepresentantProperty() {
+		return numeroRepresentant;
+	}
+
+
 	
 	
 	

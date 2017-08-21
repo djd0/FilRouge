@@ -1,42 +1,61 @@
 package controller.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-import application.Adresse;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 
 public class Prospect extends Personnes {
 	
 		
-		private Date date ;
-		protected int NbCommande;
-
+		private ObjectProperty<LocalDate> date ;
+		protected IntegerProperty nbCommande;
 		
-		public Prospect(String nom, String prenom, String rue, String ville, String pays, int codePostal) {
-			
+		
+		//Constructeur
+		public Prospect(String nom, String prenom, String rue, String ville, String pays, int codePostal) 
+		{
 			super(nom, prenom, rue, ville, pays, codePostal);
 			
-			date = "";
-			NbCommande = 0;
+			
+			this.date = new SimpleObjectProperty<LocalDate>(LocalDate.of(1, 1, 1));
+			this.nbCommande = new SimpleIntegerProperty(0);
 		}
 
 		
+		// Get / Set
+		public LocalDate getDate() {
+			return date.get();
+		}
+
+
+		public void setDate(LocalDate date) {
+			this.date.set(date);
+		}
 		
-		public Date getDate() {
+		public ObjectProperty<LocalDate> dateProperty() {
 			return date;
 		}
 
-		public void setDate(Date date) {
-			this.date = date;
+		public int getNbCommande() {
+			return nbCommande.get();
 		}
 
-		public int getNbCommande() {
-			return NbCommande;
-		}
 
 		public void setNbCommande(int nbCommande) {
-			NbCommande = nbCommande;
+			this.nbCommande.set(nbCommande);
 		}
+		
+		public IntegerProperty nbCommandeProperty() {
+			return nbCommande;
+		}
+		
+		
 
+		
+	
 	
 		
 		

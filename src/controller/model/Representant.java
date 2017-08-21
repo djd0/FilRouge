@@ -1,63 +1,94 @@
 package controller.model;
 
-import java.util.ArrayList;
+
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 
 public class Representant extends Personnes {
 
 	
 	// init du compteur de representants
-	protected int numeroRepresentant = 0;
+	protected IntegerProperty numeroRepresentant;
+	protected static int numeroRep = 0;
 	
-	protected double tauxCom;
-	protected double salaire;
+	protected DoubleProperty tauxCom;
+	protected DoubleProperty salaire;
+
 	
-	//Creation liste Representant
-	static ArrayList<Representant> listeRepresentant;
-	
-	//Constructeur
+
 	public Representant(String nom, String prenom, String rue, String ville, String pays, int codePostal,
-						int numeroRepresentant, double tauxCom, double salaire) 
+						double tauxCom, double salaire)
 	{
 		super(nom, prenom, rue, ville, pays, codePostal);
 		
 		//Incrementation compteur clients
-		numeroRepresentant ++;
+		numeroRep ++;
 		
-		this.numeroRepresentant = numeroRepresentant;
-		this.tauxCom = tauxCom;
-		this.salaire = salaire;
+		this.numeroRepresentant = new SimpleIntegerProperty(numeroRep);
+		this.tauxCom = new SimpleDoubleProperty(tauxCom);
 		
-		// Instance de la liste
-		listeRepresentant = new ArrayList<Representant>();
+		this.salaire = new SimpleDoubleProperty(salaire);
+		
+
+	}
+	
+	public Representant ()
+	{
+		
 	}
 
+
 	
-	// GET / SET
+	//Get / Set
 	public int getNumeroRepresentant() {
+		return numeroRepresentant.get();
+	}
+
+
+	public void setNumeroRepresentant(int numeroRepresentant) {
+		this.numeroRepresentant.set(numeroRepresentant);
+	}
+	
+	public IntegerProperty numeroRepresentantProperty() {
 		return numeroRepresentant;
 	}
 
-	public void setNumeroRepresentant(int numeroRepresentant) {
-		this.numeroRepresentant = numeroRepresentant;
-	}
 
 	public double getTauxCom() {
+		return tauxCom.get();
+	}
+
+
+	public void setTauxCom(double tauxCom) {
+		this.tauxCom.set(tauxCom);
+	}
+	
+	public DoubleProperty tauxComProperty() {
 		return tauxCom;
 	}
 
-	public void setTauxCom(double tauxCom) {
-		this.tauxCom = tauxCom;
-	}
 
 	public double getSalaire() {
+		return salaire.get();
+	}
+
+
+	public void setSalaire(double salaire) {
+		this.salaire.set(salaire);
+	}
+	
+	public DoubleProperty salaireProperty() {
 		return salaire;
 	}
 
-	public void setSalaire(double salaire) {
-		this.salaire = salaire;
-	}
+
+
 	
-	
+
+
+
 	
 }
