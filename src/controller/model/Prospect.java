@@ -51,14 +51,7 @@ public class Prospect extends Personnes {
 		public IntegerProperty nbCommandeProperty() {
 			return nbCommande;
 		}
-		
-		
 
-		
-	
-	
-		
-		
-		
-		
+
+
 	}

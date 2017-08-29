@@ -8,6 +8,7 @@ import controller.model.Prospect;
 import controller.model.Representant;
 import controller.view.ClientController;
 import controller.view.MenuController;
+import controller.view.ProspectController;
 import controller.view.RepresentantController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -58,6 +59,8 @@ public class MainApp extends Application {
         donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
         donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
         donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
+
+    
         
        
     }
@@ -193,6 +196,30 @@ public class MainApp extends Application {
 			 e.printStackTrace();
 		}
 	}
+	
+	
+	public void afficherFormulaireProspect()
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			
+			loader.setLocation(MainApp.class.getResource("view/FormulaireProspect.fxml"));
+			
+			AnchorPane ficheRepresentant = (AnchorPane) loader.load();
+			
+			rootLayout.setCenter(ficheRepresentant);
+			
+			ProspectController controller = loader.getController();
+			controller.setMainApp(this);
+		}
+		catch ( IOException e)
+		{
+			 e.printStackTrace();
+		}
+	}
+	
+	
 
 	
 
