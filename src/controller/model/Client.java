@@ -22,12 +22,13 @@ public class Client extends Personnes {
 	protected StringProperty siret;
 	protected IntegerProperty nbCommande;
 	protected IntegerProperty numeroRepresentant;
+	protected Representant rep;
 
 	
 	//Constructeur
 	public Client(String nom, String prenom, String rue, String ville,
 			String pays, int codePostal, String telephone,
-			String email, String enseigne, String siret, int nbCommande) 
+			String email, String enseigne, String siret, int nbCommande, int numeroRepresentant) 
 	{
 		super(nom, prenom, rue, ville, pays, codePostal);
 
@@ -36,7 +37,7 @@ public class Client extends Personnes {
 		this.enseigne = new SimpleStringProperty(enseigne);
 		this.siret = new SimpleStringProperty(siret);
 		this.nbCommande = new SimpleIntegerProperty(nbCommande);
-		this.numeroRepresentant =  numeroRepresentantProperty();
+		this.numeroRepresentant =  new SimpleIntegerProperty(numeroRepresentant);
 		
 		//Incrementation compteur clients
 		numClient ++;
