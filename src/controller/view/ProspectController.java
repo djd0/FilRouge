@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import utilitaires.DateUtil;
 
 public class ProspectController {
 	@FXML
@@ -104,7 +105,9 @@ public class ProspectController {
             villeLabel.setText(prospect.getVille());
             paysLabel.setText(prospect.getPays());
             nbCommandeLabel.setText(Integer.toString(prospect.getNbCommande()));  
-            //dateLabel.setText(LocalDate.toString(prospect.getDate())); 
+            dateLabel.setText(DateUtil.format(prospect.getDate())); 
+            
+            
             
         } 
         else 
@@ -117,7 +120,7 @@ public class ProspectController {
             villeLabel.setText("");
             paysLabel.setText("");
             nbCommandeLabel.setText("");
-            // TODO ajout date
+            dateLabel.setText("");
            
             
         }

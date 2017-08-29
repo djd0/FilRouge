@@ -13,7 +13,7 @@
 
            
             <Button fx:id="Clients" layoutX="381.0" layoutY="132.0" mnemonicParsing="false" onAction="#handleClients" text="Clients" />
-            <Button layoutX="241.0" layoutY="263.0" mnemonicParsing="false" text="Prospects" />
+            <Button fx:id="Prospects" layoutX="241.0" layoutY="263.0" mnemonicParsing="false" onAction="#handleProspect" text="Prospects" />
             <Button fx:id="sentant" layoutX="76.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleRepresentant" text="Représentants" />
 
             <Text layoutX="303.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOUTBOIS" wrappingWidth="182.13671875">
