@@ -10,9 +10,12 @@
    <center>
       <Pane cache="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="Clients" layoutX="351.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleClients" text="Clients" />
-            <Button fx:id="Prospects" layoutX="240.0" layoutY="163.0" mnemonicParsing="false" onAction="#handleProspect" text="Prospects" />
-            <Button fx:id="sentant" layoutX="87.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleRepresentant" text="Représentants" />
+
+           
+            <Button fx:id="Clients" layoutX="381.0" layoutY="132.0" mnemonicParsing="false" onAction="#handleClients" text="Clients" />
+            <Button layoutX="241.0" layoutY="263.0" mnemonicParsing="false" text="Prospects" />
+            <Button fx:id="sentant" layoutX="76.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleRepresentant" text="Représentants" />
+
             <Text layoutX="303.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOUTBOIS" wrappingWidth="182.13671875">
                <font>
                   <Font name="System Bold Italic" size="24.0" />

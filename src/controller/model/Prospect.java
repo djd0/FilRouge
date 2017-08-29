@@ -15,7 +15,7 @@ public class Prospect extends Personnes {
 		
 		
 		//Constructeur
-		public Prospect(String nom, String prenom, String rue, String ville, String pays, int codePostal) 
+		public Prospect(String nom, String prenom, String rue, String ville, String pays, int codePostal, LocalDate date) 
 		{
 			super(nom, prenom, rue, ville, pays, codePostal);
 			

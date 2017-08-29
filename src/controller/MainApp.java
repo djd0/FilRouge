@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import controller.model.Client;
 import controller.model.Prospect;
@@ -45,19 +46,21 @@ public class MainApp extends Application {
         donneesRepresentant.add(new Representant("ERMOT", "Michelle", "13 rue jean jura", "croix", "FRANCE", 59170, 0.2, 1300));
 		
 		// ajout de 5 clients
-		donneesClient.add(new Client("ARIS", "Mathieu", "36 rue du fel", "Lille", "FRANCE", 59000, "03.20.12.13.14", "mathieu.aris@gmail.com", "VILASTIS", "71203480000201", 10));
-		donneesClient.add(new Client("BEST", "Loic", "12 impasse du plomeut", "Wasquehal", "FRANCE", 59290, "03.20.26.27.28", "loic.best@gmail.com", "ENEDIS", "71203480000201", 20));
-		donneesClient.add(new Client("CARRY", "Bernard", "2 bd de l'egalite", "Roubaix", "FRANCE", 59100, "03.20.30.31.32", "b.carry@gmail.com", "LDLC", "7120348000020", 30));
-		donneesClient.add(new Client("DENDE", "Lucy", "22 rue pierre mol", "Lille", "FRANCE", 59000, "03.20.45.46.47", "l.dende@gmail.com", "COFIDIS", "71203480000201", 40));
-		donneesClient.add(new Client("ERMIS", "David", "10 rue de brette", "Croix", "FRANCE", 59170, "03.20.58.59.60", "d.ermiss@gmail.com", "IBM", "71203480000201", 50));
+		donneesClient.add(new Client("ARIS", "Mathieu", "36 rue du fel", "Lille", "FRANCE", 59000, "03.20.12.13.14", "mathieu.aris@gmail.com", "VILASTIS", "71203480000201", 10, 1));
+		donneesClient.add(new Client("BEST", "Loic", "12 impasse du plomeut", "Wasquehal", "FRANCE", 59290, "03.20.26.27.28", "loic.best@gmail.com", "ENEDIS", "71203480000201", 20, 2));
+		donneesClient.add(new Client("CARRY", "Bernard", "2 bd de l'egalite", "Roubaix", "FRANCE", 59100, "03.20.30.31.32", "b.carry@gmail.com", "LDLC", "7120348000020", 30, 3));
+		donneesClient.add(new Client("DENDE", "Lucy", "22 rue pierre mol", "Lille", "FRANCE", 59000, "03.20.45.46.47", "l.dende@gmail.com", "COFIDIS", "71203480000201", 40, 4));
+		donneesClient.add(new Client("ERMIS", "David", "10 rue de brette", "Croix", "FRANCE", 59170, "03.20.58.59.60", "d.ermiss@gmail.com", "IBM", "71203480000201", 50, 5));
 		
         
         // 5 Prospect
-        donneesProspect.add(new Prospect("AISAR", "Lily", "90 rue girond", "wasquehal", "FRANCE", 59290));
-        donneesProspect.add(new Prospect("AISARO", "Lilo", "95 rue girond", "wasquehal", "FRANCE", 59290));
-        donneesProspect.add(new Prospect("AISARE", "Lile", "97 rue girond", "wasquehal", "FRANCE", 59290));
-        donneesProspect.add(new Prospect("AISARA", "Lila", "98 rue girond", "wasquehal", "FRANCE", 59290));
-        donneesProspect.add(new Prospect("AISARU", "Lilu", "99 rue girond", "wasquehal", "FRANCE", 59290));
+        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
+        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
+        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
+        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
+        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
+
+    
         
        
     }

@@ -83,7 +83,7 @@ public class ClientController {
             nbCommandeLabel.setText(Integer.toString(client.getNbCommande()));  
             numeroClientLabel.setText(Integer.toString(client.getNumeroClient())); 
             // TODO associer le numeroRep au client
-            //numeroRepresentantLabel.setText(Integer.toString(client.getNumeroRepresentant()));
+            numeroRepresentantLabel.setText(Integer.toString(client.getNumeroRepresentant()));
         } 
         else 
         {
@@ -115,7 +115,7 @@ public class ClientController {
         prenomColumn.setCellValueFactory(cellData -> cellData.getValue().prenomProperty());
         numeroClientColumn.setCellValueFactory(cellData -> cellData.getValue().numeroClientProperty().asObject());
         //associer le numero au lieu de le mettre dans
-        //numeroRepresentantColumn.setCellValueFactory(cellData -> cellData.getValue().numeroRepresentantProperty().asObject());
+        numeroRepresentantColumn.setCellValueFactory(cellData -> cellData.getValue().numeroRepresentantProperty().asObject());
      
         // mettre tout a zero
         definirDonneesClient(null);
