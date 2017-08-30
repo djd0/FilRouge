@@ -48,7 +48,12 @@ public class MenuController {
     	mainApp.afficherFormulaireRepresentant();
     }
 
-
+    
+    @FXML
+    private void handleProspect()
+    {
+    	mainApp.afficherFormulaireProspect();
+    }
  
 
     

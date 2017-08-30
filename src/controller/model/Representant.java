@@ -84,11 +84,5 @@ public class Representant extends Personnes {
 		return salaire;
 	}
 
-
-
-	
-
-
-
 	
 }

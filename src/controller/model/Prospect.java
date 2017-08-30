@@ -20,7 +20,7 @@ public class Prospect extends Personnes {
 			super(nom, prenom, rue, ville, pays, codePostal);
 			
 			
-			this.date = new SimpleObjectProperty<LocalDate>(LocalDate.of(1, 1, 1));
+			this.date = new SimpleObjectProperty<LocalDate>(date);
 			this.nbCommande = new SimpleIntegerProperty(0);
 		}
 
@@ -51,14 +51,7 @@ public class Prospect extends Personnes {
 		public IntegerProperty nbCommandeProperty() {
 			return nbCommande;
 		}
-		
-		
 
-		
-	
-	
-		
-		
-		
-		
+
+
 	}

@@ -64,6 +64,9 @@ public class RepresentantController {
 		
 		//Desactive le bouton supprimer si la selection est vide
 		supprimer.disableProperty().bind(Bindings.isEmpty(representantTable.getSelectionModel().getSelectedItems()));
+		
+		// ajout d'un listener qui ecoute les changement et les montrent quand ils changent
+        representantTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> definirDonneesRepresentant(newValue));
 	}
 	
 	  // clic sur supprimer
@@ -76,6 +79,41 @@ public class RepresentantController {
        
     }
 	
+    
+	// Rempli les label avec les données ou les vide si LE REPRESENTANT est null
+    public void definirDonneesRepresentant(Representant representant) 
+    {
+        if (representant != null) {
+            
+            nomLabel.setText(representant.getNom());
+            prenomLabel.setText(representant.getPrenom());
+            rueLabel.setText(representant.getRue());
+            codePostalLabel.setText(Integer.toString(representant.getCodePostal()));
+            villeLabel.setText(representant.getVille());
+            paysLabel.setText(representant.getPays());
+            tauxCommLabel.setText(Double.toString(representant.getTauxCom()));
+            salaireLabel.setText(Double.toString(representant.getSalaire()));
+            numeroRepresentantLabel.setText(Integer.toString(representant.getNumeroRepresentant()));
+            
+        } 
+        else 
+        {
+            
+        	nomLabel.setText("");
+            prenomLabel.setText("");           
+            rueLabel.setText("");
+            codePostalLabel.setText("");
+            villeLabel.setText("");
+            paysLabel.setText("");
+            tauxCommLabel.setText("");
+            salaireLabel.setText("");
+            numeroRepresentantLabel.setText("");
+           
+     
+            
+        }
+
+}
 	
 	public MainApp getMainApp() {
 		return mainApp;
