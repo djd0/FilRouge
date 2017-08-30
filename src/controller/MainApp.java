@@ -8,6 +8,7 @@ import controller.model.Prospect;
 import controller.model.Representant;
 import controller.view.ClientController;
 import controller.view.MenuController;
+import controller.view.ModifierPersonneController;
 import controller.view.ProspectController;
 import controller.view.RepresentantController;
 import javafx.application.Application;
@@ -17,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -219,8 +221,45 @@ public class MainApp extends Application {
 		}
 	}
 	
-	
+	// Ouvre une fenetre pour modifier un client
+	// Si le user clic sur ok, les changement sont enregistre dans l'objet client et true est retourné
+	public boolean afficherFenetreModifierClient(Client client)
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			
+			loader.setLocation(MainApp.class.getResource("view/ModifierClient.fxml"));
+			
+			AnchorPane fenetreModifierClient = (AnchorPane) loader.load();
+			
+			// creation du stage de la fenetre
+	        Stage fenetreStage = new Stage();
+	        
+	        fenetreStage.setTitle("Modifier client");
+	        fenetreStage.initModality(Modality.WINDOW_MODAL);
+	        fenetreStage.initOwner(stagePrincipal);
+	        
+	        Scene scene = new Scene(fenetreModifierClient);
+	        fenetreStage.setScene(scene);
 
+			
+			ModifierPersonneController controller = loader.getController();
+			controller.setFenetreStage(fenetreStage);
+			controller.setClient(client);
+			
+			// Montre la fenetre et attend que le user la ferme
+	        fenetreStage.showAndWait();
+
+	        return controller.isOkClicked();
+
+		}
+		catch ( IOException e)
+		{
+			 e.printStackTrace();
+			 return false;
+		}
+	}
 	
 
 

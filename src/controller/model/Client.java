@@ -47,7 +47,7 @@ public class Client extends Personnes {
 	
 	public Client()
 	{
-	
+		this(null, null, null, null, null, 0, null, null, null, null, 0, 0);
 	}
 
 
