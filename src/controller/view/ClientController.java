@@ -81,8 +81,7 @@ public class ClientController {
             villeLabel.setText(client.getVille());
             paysLabel.setText(client.getPays());
             nbCommandeLabel.setText(Integer.toString(client.getNbCommande()));  
-            numeroClientLabel.setText(Integer.toString(client.getNumeroClient())); 
-            // TODO associer le numeroRep au client
+            numeroClientLabel.setText(Integer.toString(client.getNumeroClient()));             
             numeroRepresentantLabel.setText(Integer.toString(client.getNumeroRepresentant()));
         } 
         else 
