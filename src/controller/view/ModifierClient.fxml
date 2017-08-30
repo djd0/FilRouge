@@ -39,8 +39,8 @@
                </font>
             </Label>
             <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="numeroClientField" maxWidth="50.0" GridPane.columnIndex="1" />
             <TextField fx:id="nbCommandesField" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="numeroClientLabel" text="Label" GridPane.columnIndex="1" />
          </children>
       </GridPane>
       <GridPane layoutX="258.0" layoutY="175.0" prefHeight="180.0" prefWidth="222.0">

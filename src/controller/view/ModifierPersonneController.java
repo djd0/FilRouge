@@ -21,7 +21,7 @@ public class ModifierPersonneController {
 	@FXML
 	private ComboBox<Representant> representant;
 	@FXML
-	private TextField numeroClientField;
+	private Label numeroClientLabel;
 	@FXML
 	private TextField nbCommandesField;
 	@FXML
@@ -76,7 +76,7 @@ public class ModifierPersonneController {
 	{
         this.client = client;
 
-        numeroClientField.setText(Integer.toString(client.getNumeroClient()));
+        numeroClientLabel.setText(Integer.toString(client.getNumeroClient()));
         nomField.setText(client.getNom());
         prenomField.setText(client.getPrenom());
         telephoneField.setText(client.getTelephone());
@@ -112,7 +112,7 @@ public class ModifierPersonneController {
         	client.setCodePostal(Integer.parseInt(codePostalField.getText()));
         	client.setVille(villeField.getText());
         	client.setPays(paysField.getText());
-        	client.setNumeroClient(Integer.parseInt(numeroClientField.getText()));
+        	client.setNumeroClient(Integer.parseInt(numeroClientLabel.getText()));
         	client.setTelephone(telephoneField.getText());
         	client.setEnseigne(societeField.getText());
         	client.setSiret(siretField.getText());
@@ -203,23 +203,6 @@ public class ModifierPersonneController {
         {
             errorMessage += "mail invalide!\n";
         } 
-        
-        if (numeroClientField.getText() == null || numeroClientField.getText().length() == 0) 
-        {
-            errorMessage += "numero client invalide!\n";
-        }      
-        else 
-        {
-            // try to parse the postal code into an int.
-            try 
-            {
-                Integer.parseInt(numeroClientField.getText());
-            } 
-            catch (NumberFormatException e) 
-            {
-                errorMessage += "numero client invalide!\n";
-            }
-        }
         
         if (nbCommandesField.getText() == null || nbCommandesField.getText().length() == 0) 
         {
