@@ -4,6 +4,8 @@ import controller.MainApp;
 import controller.model.Client;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -81,9 +83,8 @@ public class ClientController {
             villeLabel.setText(client.getVille());
             paysLabel.setText(client.getPays());
             nbCommandeLabel.setText(Integer.toString(client.getNbCommande()));  
-            numeroClientLabel.setText(Integer.toString(client.getNumeroClient())); 
-            // TODO associer le numeroRep au client
-            //numeroRepresentantLabel.setText(Integer.toString(client.getNumeroRepresentant()));
+            numeroClientLabel.setText(Integer.toString(client.getNumeroClient()));             
+            numeroRepresentantLabel.setText(Integer.toString(client.getNumeroRepresentant()));
         } 
         else 
         {
@@ -115,7 +116,7 @@ public class ClientController {
         prenomColumn.setCellValueFactory(cellData -> cellData.getValue().prenomProperty());
         numeroClientColumn.setCellValueFactory(cellData -> cellData.getValue().numeroClientProperty().asObject());
         //associer le numero au lieu de le mettre dans
-        //numeroRepresentantColumn.setCellValueFactory(cellData -> cellData.getValue().numeroRepresentantProperty().asObject());
+        numeroRepresentantColumn.setCellValueFactory(cellData -> cellData.getValue().numeroRepresentantProperty().asObject());
      
         // mettre tout a zero
         definirDonneesClient(null);
@@ -138,6 +139,49 @@ public class ClientController {
         clientTable.getItems().remove(selectedIndex);
       
     }
+    
+    //clic sur nouveau
+    @FXML
+    private void handleNouveauClient() 
+    {
+        Client tempClient = new Client();
+        
+        boolean okClicked = mainApp.afficherFenetreModifierClient(tempClient);
+        
+        if (okClicked) 
+        {
+        	mainApp.getDonneesClient().add(tempClient);
+        }
+    }
+
+    //clic sur modifier
+    @FXML
+    private void handleModifierClient() 
+    {
+        Client clientSelectionne = clientTable.getSelectionModel().getSelectedItem();
+        
+        if (clientSelectionne != null) 
+        {
+            boolean okClicked = mainApp.afficherFenetreModifierClient(clientSelectionne);
+            
+            if (okClicked) 
+            {
+            	definirDonneesClient(clientSelectionne);
+            }
+        }
+        else
+        {
+            // si rien n'est selectionne
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(mainApp.getStagePrincipal());
+            alert.setTitle("Erreur de selection");
+            alert.setHeaderText("Aucun client selectionné");
+            alert.setContentText("Veuillez selectionner un client dans la liste.");
+
+            alert.showAndWait();
+        }
+    }
+
 
   
     public void setMainApp(MainApp mainApp) {

@@ -1,12 +1,15 @@
 package controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import controller.model.Client;
 import controller.model.Prospect;
 import controller.model.Representant;
 import controller.view.ClientController;
 import controller.view.MenuController;
+import controller.view.ModifierPersonneController;
+import controller.view.ProspectController;
 import controller.view.RepresentantController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -15,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -44,19 +48,21 @@ public class MainApp extends Application {
         donneesRepresentant.add(new Representant("ERMOT", "Michelle", "13 rue jean jura", "croix", "FRANCE", 59170, 0.2, 1300));
 		
 		// ajout de 5 clients
-		donneesClient.add(new Client("ARIS", "Mathieu", "36 rue du fel", "Lille", "FRANCE", 59000, "03.20.12.13.14", "mathieu.aris@gmail.com", "VILASTIS", "71203480000201", 10));
-		donneesClient.add(new Client("BEST", "Loic", "12 impasse du plomeut", "Wasquehal", "FRANCE", 59290, "03.20.26.27.28", "loic.best@gmail.com", "ENEDIS", "71203480000201", 20));
-		donneesClient.add(new Client("CARRY", "Bernard", "2 bd de l'egalite", "Roubaix", "FRANCE", 59100, "03.20.30.31.32", "b.carry@gmail.com", "LDLC", "7120348000020", 30));
-		donneesClient.add(new Client("DENDE", "Lucy", "22 rue pierre mol", "Lille", "FRANCE", 59000, "03.20.45.46.47", "l.dende@gmail.com", "COFIDIS", "71203480000201", 40));
-		donneesClient.add(new Client("ERMIS", "David", "10 rue de brette", "Croix", "FRANCE", 59170, "03.20.58.59.60", "d.ermiss@gmail.com", "IBM", "71203480000201", 50));
+		donneesClient.add(new Client("ARIS", "Mathieu", "36 rue du fel", "Lille", "FRANCE", 59000, "03.20.12.13.14", "mathieu.aris@gmail.com", "VILASTIS", "71203480000201", 10, 1));
+		donneesClient.add(new Client("BEST", "Loic", "12 impasse du plomeut", "Wasquehal", "FRANCE", 59290, "03.20.26.27.28", "loic.best@gmail.com", "ENEDIS", "71203480000201", 20, 2));
+		donneesClient.add(new Client("CARRY", "Bernard", "2 bd de l'egalite", "Roubaix", "FRANCE", 59100, "03.20.30.31.32", "b.carry@gmail.com", "LDLC", "7120348000020", 30, 3));
+		donneesClient.add(new Client("DENDE", "Lucy", "22 rue pierre mol", "Lille", "FRANCE", 59000, "03.20.45.46.47", "l.dende@gmail.com", "COFIDIS", "71203480000201", 40, 4));
+		donneesClient.add(new Client("ERMIS", "David", "10 rue de brette", "Croix", "FRANCE", 59170, "03.20.58.59.60", "d.ermiss@gmail.com", "IBM", "71203480000201", 50, 5));
 		
         
         // 5 Prospect
-        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290));
-        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290));
-        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290));
-        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290));
-        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290));
+        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
+        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
+        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
+        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
+        donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
+
+    
         
        
     }
@@ -192,7 +198,68 @@ public class MainApp extends Application {
 			 e.printStackTrace();
 		}
 	}
+	
+	
+	public void afficherFormulaireProspect()
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			
+			loader.setLocation(MainApp.class.getResource("view/FormulaireProspect.fxml"));
+			
+			AnchorPane ficheRepresentant = (AnchorPane) loader.load();
+			
+			rootLayout.setCenter(ficheRepresentant);
+			
+			ProspectController controller = loader.getController();
+			controller.setMainApp(this);
+		}
+		catch ( IOException e)
+		{
+			 e.printStackTrace();
+		}
+	}
+	
+	// Ouvre une fenetre pour modifier un client
+	// Si le user clic sur ok, les changement sont enregistre dans l'objet client et true est retourné
+	public boolean afficherFenetreModifierClient(Client client)
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			
+			loader.setLocation(MainApp.class.getResource("view/ModifierClient.fxml"));
+			
+			AnchorPane fenetreModifierClient = (AnchorPane) loader.load();
+			
+			// creation du stage de la fenetre
+	        Stage fenetreStage = new Stage();
+	        
+	        fenetreStage.setTitle("Modifier client");
+	        fenetreStage.initModality(Modality.WINDOW_MODAL);
+	        fenetreStage.initOwner(stagePrincipal);
+	        
+	        Scene scene = new Scene(fenetreModifierClient);
+	        fenetreStage.setScene(scene);
 
+			
+			ModifierPersonneController controller = loader.getController();
+			controller.setFenetreStage(fenetreStage);
+			controller.setClient(client);
+			
+			// Montre la fenetre et attend que le user la ferme
+	        fenetreStage.showAndWait();
+
+	        return controller.isOkClicked();
+
+		}
+		catch ( IOException e)
+		{
+			 e.printStackTrace();
+			 return false;
+		}
+	}
 	
 
 

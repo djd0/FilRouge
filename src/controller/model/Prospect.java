@@ -15,12 +15,12 @@ public class Prospect extends Personnes {
 		
 		
 		//Constructeur
-		public Prospect(String nom, String prenom, String rue, String ville, String pays, int codePostal) 
+		public Prospect(String nom, String prenom, String rue, String ville, String pays, int codePostal, LocalDate date) 
 		{
 			super(nom, prenom, rue, ville, pays, codePostal);
 			
 			
-			this.date = new SimpleObjectProperty<LocalDate>(LocalDate.of(1, 1, 1));
+			this.date = new SimpleObjectProperty<LocalDate>(date);
 			this.nbCommande = new SimpleIntegerProperty(0);
 		}
 
@@ -51,14 +51,7 @@ public class Prospect extends Personnes {
 		public IntegerProperty nbCommandeProperty() {
 			return nbCommande;
 		}
-		
-		
 
-		
-	
-	
-		
-		
-		
-		
+
+
 	}
