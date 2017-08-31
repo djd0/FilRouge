@@ -10,9 +10,11 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class Representant extends Personnes {
 
 	
+	
+
 	// init du compteur de representants
 	protected IntegerProperty numeroRepresentant;
-	protected static int numeroRep = 0;
+	public static int numeroRep = 0;
 	
 	protected DoubleProperty tauxCom;
 	protected DoubleProperty salaire;
@@ -35,10 +37,12 @@ public class Representant extends Personnes {
 
 	}
 	
-	public Representant ()
+
+	public Representant() 
 	{
-		
+		this(null, null, null, null, null, 0, 0, 0);
 	}
+
 
 
 	
@@ -82,6 +86,11 @@ public class Representant extends Personnes {
 	
 	public DoubleProperty salaireProperty() {
 		return salaire;
+	}
+
+	@Override
+	public String toString() {
+		return this.getNumeroRepresentant() + " - " + this.getNom() + " " + this.getPrenom();
 	}
 
 	

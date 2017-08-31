@@ -56,7 +56,8 @@ public class ClientController {
     private Button supprimer;
 
     
-    private Client client;
+    @SuppressWarnings("unused")
+	private Client client;
 
     private Stage clientStage;
    
@@ -70,6 +71,8 @@ public class ClientController {
     // Rempli les label avec les données ou les vide si client est null
     public void definirDonneesClient(Client client) 
     {
+    	
+    	
         if (client != null) {
             
             nomLabel.setText(client.getNom());
@@ -83,7 +86,7 @@ public class ClientController {
             villeLabel.setText(client.getVille());
             paysLabel.setText(client.getPays());
             nbCommandeLabel.setText(Integer.toString(client.getNbCommande()));  
-            numeroClientLabel.setText(Integer.toString(client.getNumeroClient()));             
+            numeroClientLabel.setText(Integer.toString(client.getNumeroClient()));                    
             numeroRepresentantLabel.setText(Integer.toString(client.getNumeroRepresentant()));
         } 
         else 
@@ -182,7 +185,20 @@ public class ClientController {
         }
     }
 
+    
+    //clic represesntant
+    @FXML
+    private void handleRepresentant()
+    {
+    	mainApp.afficherFormulaireRepresentant();
+    }
 
+    
+    @FXML
+    private void handleProspect()
+    {
+    	mainApp.afficherFormulaireProspect();
+    }
   
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;

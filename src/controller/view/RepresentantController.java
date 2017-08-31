@@ -4,10 +4,12 @@ import controller.MainApp;
 import controller.model.Representant;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 
 public class RepresentantController {
 
@@ -62,6 +64,9 @@ public class RepresentantController {
 		prenomColumn.setCellValueFactory(cellData -> cellData.getValue().prenomProperty());
 		numeroRepresentantColumn.setCellValueFactory(cellData -> cellData.getValue().numeroRepresentantProperty().asObject());
 		
+		// mettre tout a zero
+        definirDonneesRepresentant(null);
+		
 		//Desactive le bouton supprimer si la selection est vide
 		supprimer.disableProperty().bind(Bindings.isEmpty(representantTable.getSelectionModel().getSelectedItems()));
 		
@@ -77,6 +82,48 @@ public class RepresentantController {
 
         representantTable.getItems().remove(selectedIndex);
        
+    }
+    
+    //clic sur nouveau
+    @FXML
+    private void handleNouveauRepresentant() 
+    {
+    	Representant tempRepresentant = new Representant();
+        
+        boolean okClicked = mainApp.afficherFenetreModifierRepresentant(tempRepresentant);
+        
+        if (okClicked) 
+        {
+        	mainApp.getDonneesRepresentant().add(tempRepresentant);
+        }
+    }
+
+    //clic sur modifier
+    @FXML
+    private void handleModifierRepresentant() 
+    {
+    	Representant representantSelectionne = representantTable.getSelectionModel().getSelectedItem();
+        
+        if (representantSelectionne != null) 
+        {
+            boolean okClicked = mainApp.afficherFenetreModifierRepresentant(representantSelectionne);
+            
+            if (okClicked) 
+            {
+            	definirDonneesRepresentant(representantSelectionne);
+            }
+        }
+        else
+        {
+            // si rien n'est selectionne
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(mainApp.getStagePrincipal());
+            alert.setTitle("Erreur de selection");
+            alert.setHeaderText("Aucun client selectionné");
+            alert.setContentText("Veuillez selectionner un client dans la liste.");
+
+            alert.showAndWait();
+        }
     }
 	
     
@@ -114,6 +161,21 @@ public class RepresentantController {
         }
 
 }
+    
+    // clic sur client
+    @FXML
+    private void handleClients() 
+    {       	   	
+    	
+    	mainApp.afficherFormulaireClient();
+    	
+    }
+
+    @FXML
+    private void handleProspect()
+    {
+    	mainApp.afficherFormulaireProspect();
+    }
 	
 	public MainApp getMainApp() {
 		return mainApp;

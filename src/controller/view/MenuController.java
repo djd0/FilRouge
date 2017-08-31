@@ -17,7 +17,8 @@ public class MenuController {
 	
 	private MainApp mainApp;
 	
-    private Stage clientStage;
+    @SuppressWarnings("unused")
+	private Stage clientStage;
 
     
     

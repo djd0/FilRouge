@@ -3,16 +3,15 @@ package controller.view;
 import java.time.LocalDate;
 
 import controller.MainApp;
-import controller.model.Client;
 import controller.model.Prospect;
-import controller.model.Representant;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.ObjectProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import utilitaires.DateUtil;
 
 public class ProspectController {
@@ -63,8 +62,10 @@ public class ProspectController {
 		prenomColumn.setCellValueFactory(cellData -> cellData.getValue().prenomProperty());
 		dateColumn.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
 		
-		//Desactive le bouton supprimer si la selection est vide
+		// mettre tout a zero
+        definirDonneesProspect(null);
 		
+		//Desactive le bouton supprimer si la selection est vide
 		supprimer.disableProperty().bind(Bindings.isEmpty(ProspectTable.getSelectionModel().getSelectedItems()));
 		
 		 // ajout d'un listener qui ecoute les changement et les montrent quand ils changent
@@ -79,6 +80,48 @@ public class ProspectController {
 
         ProspectTable.getItems().remove(selectedIndex);
        
+    }
+    
+    //clic sur nouveau
+    @FXML
+    private void handleNouveauProspect() 
+    {
+        Prospect tempProspect = new Prospect();
+        
+        boolean okClicked = mainApp.afficherFenetreModifierProspect(tempProspect);
+        
+        if (okClicked) 
+        {
+        	mainApp.getDonneesProspect().add(tempProspect);
+        }
+    }
+
+    //clic sur modifier
+    @FXML
+    private void handleModifierProspect() 
+    {
+        Prospect prospectSelectionne = ProspectTable.getSelectionModel().getSelectedItem();
+        
+        if (prospectSelectionne != null) 
+        {
+            boolean okClicked = mainApp.afficherFenetreModifierProspect(prospectSelectionne);
+            
+            if (okClicked) 
+            {
+            	definirDonneesProspect(prospectSelectionne);
+            }
+        }
+        else
+        {
+            // si rien n'est selectionne
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(mainApp.getStagePrincipal());
+            alert.setTitle("Erreur de selection");
+            alert.setHeaderText("Aucun client selectionné");
+            alert.setContentText("Veuillez selectionner un client dans la liste.");
+
+            alert.showAndWait();
+        }
     }
 	
 	
@@ -126,6 +169,23 @@ public class ProspectController {
         }
 
 }
+    
+    // clic sur client
+    @FXML
+    private void handleClients() 
+    {       	   	
+    	
+    	mainApp.afficherFormulaireClient();
+    	
+    }
+    
+    //clic represesntant
+    @FXML
+    private void handleRepresentant()
+    {
+    	mainApp.afficherFormulaireRepresentant();
+    }
+
 }
 	
 	

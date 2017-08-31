@@ -23,6 +23,13 @@ public class Prospect extends Personnes {
 			this.date = new SimpleObjectProperty<LocalDate>(date);
 			this.nbCommande = new SimpleIntegerProperty(0);
 		}
+		
+
+		public Prospect() 
+		{
+			this(null, null, null, null, null, 0, null);
+		}
+
 
 		
 		// Get / Set

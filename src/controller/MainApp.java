@@ -48,11 +48,11 @@ public class MainApp extends Application {
         donneesRepresentant.add(new Representant("ERMOT", "Michelle", "13 rue jean jura", "croix", "FRANCE", 59170, 0.2, 1300));
 		
 		// ajout de 5 clients
-		donneesClient.add(new Client("ARIS", "Mathieu", "36 rue du fel", "Lille", "FRANCE", 59000, "03.20.12.13.14", "mathieu.aris@gmail.com", "VILASTIS", "71203480000201", 10, 1));
+		donneesClient.add(new Client("ARIS", "Mathieu", "36 rue du fel", "Lille", "FRANCE", 59000, "03.20.12.13.14", "mathieu.aris@gmail.com", "VILASTIS", "71203480000201", 10, 8));
 		donneesClient.add(new Client("BEST", "Loic", "12 impasse du plomeut", "Wasquehal", "FRANCE", 59290, "03.20.26.27.28", "loic.best@gmail.com", "ENEDIS", "71203480000201", 20, 2));
-		donneesClient.add(new Client("CARRY", "Bernard", "2 bd de l'egalite", "Roubaix", "FRANCE", 59100, "03.20.30.31.32", "b.carry@gmail.com", "LDLC", "7120348000020", 30, 3));
+		donneesClient.add(new Client("CARRY", "Bernard", "2 bd de l'egalite", "Roubaix", "FRANCE", 59100, "03.20.30.31.32", "b.carry@gmail.com", "LDLC", "7120348000020", 30, 6));
 		donneesClient.add(new Client("DENDE", "Lucy", "22 rue pierre mol", "Lille", "FRANCE", 59000, "03.20.45.46.47", "l.dende@gmail.com", "COFIDIS", "71203480000201", 40, 4));
-		donneesClient.add(new Client("ERMIS", "David", "10 rue de brette", "Croix", "FRANCE", 59170, "03.20.58.59.60", "d.ermiss@gmail.com", "IBM", "71203480000201", 50, 5));
+		donneesClient.add(new Client("ERMIS", "David", "10 rue de brette", "Croix", "FRANCE", 59170, "03.20.58.59.60", "d.ermiss@gmail.com", "IBM", "71203480000201", 50, 12));
 		
         
         // 5 Prospect
@@ -62,7 +62,7 @@ public class MainApp extends Application {
         donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
         donneesProspect.add(new Prospect("AISAR", "Lily", "9 rue girond", "wasquehal", "FRANCE", 59290, LocalDate.of(2014, 6, 30)));
 
-    
+        
         
        
     }
@@ -247,6 +247,82 @@ public class MainApp extends Application {
 			ModifierPersonneController controller = loader.getController();
 			controller.setFenetreStage(fenetreStage);
 			controller.setClient(client);
+			controller.setMainApp(this);
+			// Montre la fenetre et attend que le user la ferme
+	        fenetreStage.showAndWait();
+
+	        return controller.isOkClicked();
+
+		}
+		catch ( IOException e)
+		{
+			 e.printStackTrace();
+			 return false;
+		}
+	}
+	
+	public boolean afficherFenetreModifierProspect(Prospect prospect)
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			
+			loader.setLocation(MainApp.class.getResource("view/ModifierProspect.fxml"));
+			
+			AnchorPane fenetreModifierProspect = (AnchorPane) loader.load();
+			
+			// creation du stage de la fenetre
+	        Stage fenetreStage = new Stage();
+	        
+	        fenetreStage.setTitle("Modifier prospect");
+	        fenetreStage.initModality(Modality.WINDOW_MODAL);
+	        fenetreStage.initOwner(stagePrincipal);
+	        
+	        Scene scene = new Scene(fenetreModifierProspect);
+	        fenetreStage.setScene(scene);
+
+			
+			ModifierPersonneController controller = loader.getController();
+			controller.setFenetreStage(fenetreStage);
+			controller.setProspect(prospect);
+			
+			// Montre la fenetre et attend que le user la ferme
+	        fenetreStage.showAndWait();
+
+	        return controller.isOkClicked();
+
+		}
+		catch ( IOException e)
+		{
+			 e.printStackTrace();
+			 return false;
+		}
+	}
+	
+	public boolean afficherFenetreModifierRepresentant(Representant representant)
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			
+			loader.setLocation(MainApp.class.getResource("view/ModifierRepresentant.fxml"));
+			
+			AnchorPane fenetreModifierRepresentant = (AnchorPane) loader.load();
+			
+			// creation du stage de la fenetre
+	        Stage fenetreStage = new Stage();
+	        
+	        fenetreStage.setTitle("Modifier representant");
+	        fenetreStage.initModality(Modality.WINDOW_MODAL);
+	        fenetreStage.initOwner(stagePrincipal);
+	        
+	        Scene scene = new Scene(fenetreModifierRepresentant);
+	        fenetreStage.setScene(scene);
+
+			
+			ModifierPersonneController controller = loader.getController();
+			controller.setFenetreStage(fenetreStage);
+			controller.setRepresentant(representant);
 			
 			// Montre la fenetre et attend que le user la ferme
 	        fenetreStage.showAndWait();

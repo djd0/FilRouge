@@ -14,7 +14,7 @@ public class Client extends Personnes {
 	
 	// Init du compteur client
 	protected IntegerProperty numeroClient;
-	protected static int numClient = 0;
+	public static int numClient = 0;
 	
 	protected StringProperty telephone;
 	protected StringProperty email;
