@@ -1,21 +1,33 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.prefs.Preferences;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 import controller.model.Client;
+import controller.model.ClientListWrapper;
 import controller.model.Prospect;
+import controller.model.ProspectListWrapper;
 import controller.model.Representant;
+import controller.model.RepresentantListWrapper;
 import controller.view.ClientController;
 import controller.view.MenuController;
 import controller.view.ModifierPersonneController;
 import controller.view.ProspectController;
 import controller.view.RepresentantController;
+import controller.view.RootLayoutController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -121,6 +133,11 @@ public class MainApp extends Application {
             
             // afectation de la scene au menuStage
             stagePrincipal.setScene(scene);
+            
+            // Donne la main au controlleur
+            RootLayoutController controller = loader.getController();
+            controller.setMainApp(this);
+
 
             // Afficher le menuStage
             stagePrincipal.show();
@@ -130,6 +147,14 @@ public class MainApp extends Application {
         {
             e.printStackTrace();
         }
+        
+        // Charge le dernier fichier ouvert 
+        File file = getPersonFilePath();
+        if (file != null)
+        {
+            loadPersonDataFromFile(file);
+        }
+
     }
 	
 	
@@ -337,6 +362,132 @@ public class MainApp extends Application {
 		}
 	}
 	
+	// return le fichier preference comme il était a la precedente ouverture, si non trouver retourne null
+	public File getPersonFilePath() 
+	{
+	    Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+	    String filePath = prefs.get("filePath", null);
+	    
+	    if (filePath != null) 
+	    {
+	        return new File(filePath);
+	    } 
+	    else 
+	    {
+	        return null;
+	    }
+	}
+	
+	// met en place le chemin du fichier ou l'enleve si fichier = null
+	public void setPersonFilePath(File file) 
+	{
+	    Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+	    
+	    if (file != null) 
+	    {
+	        prefs.put("filePath", file.getPath());
+
+	        // Mise a jour du titre
+	        stagePrincipal.setTitle("Centre de gestion ToutBois " + file.getName());
+	    } 
+	    else 
+	    {
+	        prefs.remove("filePath");
+
+	        // Mise a jour du titre
+	        stagePrincipal.setTitle("Centre de gestion ToutBois ");
+	    }
+	}
+
+
+	// charge les données d'une personne a partir d'un fichier
+	public void loadPersonDataFromFile(File file) 
+	{
+	    try 
+	    {
+	        JAXBContext context = JAXBContext.newInstance(ProspectListWrapper.class);
+	        Unmarshaller um = context.createUnmarshaller();
+	        
+	        JAXBContext context2 = JAXBContext.newInstance(ClientListWrapper.class);
+	        Unmarshaller um2 = context2.createUnmarshaller();
+	        
+	        JAXBContext context3 = JAXBContext.newInstance(RepresentantListWrapper.class);
+	        Unmarshaller um3 = context3.createUnmarshaller();
+
+	        // Reading XML from the file and unmarshalling.
+	        ProspectListWrapper wrapper1 = (ProspectListWrapper) um.unmarshal(file);
+	        RepresentantListWrapper wrapper2 = (RepresentantListWrapper) um3.unmarshal(file);
+	        ClientListWrapper wrapper3 = (ClientListWrapper) um2.unmarshal(file);
+
+	        donneesClient.clear();
+	        donneesProspect.clear();
+	        donneesRepresentant.clear();
+	        
+	        donneesProspect.addAll(wrapper1.getProspect());
+	        donneesRepresentant.addAll(wrapper2.getRepresentant());
+	        donneesClient.addAll(wrapper3.getClient());
+	        
+
+	        // Save the file path to the registry.
+	        setPersonFilePath(file);
+
+	    } 
+	    catch (Exception e) 
+	    { 
+	        Alert alert = new Alert(AlertType.ERROR);
+	        alert.setTitle("Erreur");
+	        alert.setHeaderText("chargement impossible");
+	        alert.setContentText("impossible de charger les donnees du fichier :\n" + file.getPath());
+
+	        alert.showAndWait();
+	    }
+	}
+
+	// sauvegarde les données d'une personne a partir d'un fichier
+	public void savePersonDataToFile(File file) 
+	{
+	    try
+	    {
+	        JAXBContext context = JAXBContext.newInstance(ProspectListWrapper.class);
+	        Marshaller m = context.createMarshaller();
+	        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+	        
+	        JAXBContext context2 = JAXBContext.newInstance(ClientListWrapper.class);
+	        Marshaller m2 = context2.createMarshaller();
+	        m2.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+	        
+	        JAXBContext context3 = JAXBContext.newInstance(RepresentantListWrapper.class);
+	        Marshaller m3 = context3.createMarshaller();
+	        m3.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+	        ProspectListWrapper wrapper1 = new ProspectListWrapper();
+	        RepresentantListWrapper wrapper2 = new RepresentantListWrapper();
+	        ClientListWrapper wrapper3 = new ClientListWrapper();	            
+
+	        wrapper1.setProspect(donneesProspect);  
+	        wrapper2.setRepresentant(donneesRepresentant); 
+	        wrapper3.setClient(donneesClient);  
+
+	        // Marshalling and saving XML to the file.
+	        m.marshal(wrapper1, file);
+	        m2.marshal(wrapper3, file);
+	        m3.marshal(wrapper2, file);
+
+	        // Save the file path to the registry.
+	        setPersonFilePath(file);
+	    } 
+	    catch (Exception e) 
+	    { 
+	        e.printStackTrace();
+	    	Alert alert = new Alert(AlertType.ERROR);
+	        alert.setTitle("Erreur");
+	        alert.setHeaderText("Sauvegarde impossible");
+	        alert.setContentText("Impossible de sauvegarder les donnees dans le fichier :\n" + file.getPath());
+
+	        alert.showAndWait();
+	    }
+	}
+
 
 
 	public Stage getStagePrincipal() {

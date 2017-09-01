@@ -80,6 +80,25 @@ public class ModifierPersonneController {
     }
 
 
+	public void setMainApp(MainApp mainApp) 
+	{
+		int i;
+		
+		this.mainApp = mainApp;
+		
+		if (client == null)
+		{
+			representantComboBox.setItems(mainApp.getDonneesRepresentant());
+			representantComboBox.getSelectionModel().select(0);
+		}
+		else
+		{
+			representantComboBox.setItems(mainApp.getDonneesRepresentant());
+			i = client.getNumeroRepresentant();
+			representantComboBox.getSelectionModel().select(i-1);
+		}
+	}
+	
 	public Stage getFenetreStage() 
 	{
 		return fenetreStage;
@@ -95,7 +114,7 @@ public class ModifierPersonneController {
 	// modifier un client
 	public void setClient(Client client) 
 	{
-        
+       
 		
 		this.client = client;
 
@@ -110,7 +129,17 @@ public class ModifierPersonneController {
         villeField.setText(client.getVille());
         paysField.setText(client.getPays());
         nbCommandesField.setText(Integer.toString(client.getNbCommande()));  
-        mailField.setText(client.getEmail());  
+        mailField.setText(client.getEmail());
+        
+        if ( client.getCodePostal() == 0)
+        {
+        	codePostalField.setText(null);
+        }
+        if ( client.getNbCommande() == 0)
+        {
+        	nbCommandesField.setText(null);
+        }
+        
       
     }
 	
@@ -129,6 +158,15 @@ public class ModifierPersonneController {
             paysField.setText(prospect.getPays());
             nbCommandesField.setText(Integer.toString(prospect.getNbCommande()));  
             dateField.setText(DateUtil.format(prospect.getDate())); 
+            
+            if ( prospect.getCodePostal() == 0)
+            {
+            	codePostalField.setText(null);
+            }
+            if ( prospect.getNbCommande() == 0)
+            {
+            	nbCommandesField.setText(null);
+            }
 	      
 	    }
 		
@@ -148,17 +186,22 @@ public class ModifierPersonneController {
             tauxCommField.setText(Double.toString(representant.getTauxCom()));
             salaireField.setText(Double.toString(representant.getSalaire()));
             numeroRepresentantLabel.setText(Integer.toString(representant.getNumeroRepresentant()));
+            
+            if ( representant.getCodePostal() == 0)
+            {
+            	codePostalField.setText(null);
+            }
+            if ( representant.getSalaire() == 0)
+            {
+            	salaireField.setText(null);
+            }
+            if ( representant.getTauxCom() == 0)
+            {
+            	tauxCommField.setText(null);
+            }
+            
 	      
 	    }
-
-
-
-	public void setMainApp(MainApp mainApp) 
-	{
-		this.mainApp = mainApp;
-		
-		representantComboBox.getItems().addAll(mainApp.getDonneesRepresentant());
-	}
 
 
 	// Si le user clic sur ok alors return true
@@ -188,12 +231,10 @@ public class ModifierPersonneController {
         	client.setEnseigne(societeField.getText());
         	client.setSiret(siretField.getText());
         	client.setEmail(mailField.getText());
-        	client.setNbCommande(Integer.parseInt(nbCommandesField.getText()));
+        	client.setNbCommande(Integer.parseInt(nbCommandesField.getText()));       	
         	
-        	s = representantComboBox.getValue().toString();
-            System.out.println("s = "+s);
-            t=s.split(" ");
-            System.out.println("t = "+t[0]);
+        	s = representantComboBox.getValue().toString();            
+            t=s.split(" ");            
             client.setNumeroRepresentant(Integer.parseInt(t[0]));
         	
 
