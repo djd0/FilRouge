@@ -44,7 +44,7 @@ public class Client extends Personnes {
 		numClient ++;
 		this.numeroClient = new SimpleIntegerProperty(numClient);
 		
-		MainApp.donneesClient.add(this);
+		
 
 	}
 	

@@ -151,7 +151,7 @@ public class ClientController {
     {
         Client tempClient = new Client();
         
-        boolean okClicked = mainApp.afficherFenetreModifierClient(tempClient);
+        boolean okClicked = mainApp.afficherFenetreAjouterClient(tempClient);
         
         if (okClicked) 
         {

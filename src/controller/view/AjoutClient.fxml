@@ -4,18 +4,20 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view.ModifierPersonneController">
+<AnchorPane prefHeight="450.0" prefWidth="500.0" styleClass="background" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view.ModifierPersonneController">
    <children>
-      <GridPane layoutX="33.0" layoutY="47.0" prefHeight="90.0" prefWidth="297.0">
+      <GridPane layoutX="33.0" layoutY="30.0" prefHeight="90.0" prefWidth="297.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="158.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="217.0" minWidth="10.0" prefWidth="139.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="185.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="217.0" minWidth="10.0" prefWidth="112.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -23,17 +25,17 @@
           <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Numéro client : ">
+            <Label styleClass="label-bright" text="Numéro client : ">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label text="Représentant : " GridPane.rowIndex="1">
+            <Label styleClass="label-bright" text="Représentant : " GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label text="Nombre de commandes : " GridPane.rowIndex="2">
+            <Label styleClass="label-bright" text="Nombre de commandes : " GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -43,7 +45,7 @@
             <Label fx:id="numeroClientLabel" text="Label" GridPane.columnIndex="1" />
          </children>
       </GridPane>
-      <GridPane layoutX="258.0" layoutY="175.0" prefHeight="180.0" prefWidth="222.0">
+      <GridPane layoutX="263.0" layoutY="145.0" prefHeight="242.0" prefWidth="222.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="83.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="10.0" prefWidth="130.0" />
@@ -57,32 +59,32 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Société : ">
+            <Label styleClass="label-bright" text="Société : ">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label text="SIRET :" GridPane.rowIndex="1">
+            <Label styleClass="label-bright" text="SIRET :" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label text="Pays : " GridPane.rowIndex="2">
+            <Label styleClass="label-bright" text="Pays : " GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label text="Ville : " GridPane.rowIndex="3">
+            <Label styleClass="label-bright" text="Ville : " GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label text="Code Postal :" GridPane.rowIndex="4">
+            <Label styleClass="label-bright" text="Code Postal :" GridPane.rowIndex="4">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label text="Rue : " GridPane.rowIndex="5">
+            <Label styleClass="label-bright" text="Rue : " GridPane.rowIndex="5">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -95,10 +97,10 @@
             <TextField fx:id="rueField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <GridPane layoutX="33.0" layoutY="175.0">
+      <GridPane layoutX="33.0" layoutY="145.0" prefHeight="149.0" prefWidth="200.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="62.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="138.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="80.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="120.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -107,22 +109,22 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Nom : ">
+            <Label styleClass="label-bright" text="Nom : ">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label text="Prenom : " GridPane.rowIndex="1">
+            <Label styleClass="label-bright" text="Prenom : " GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label text="E -mail :" GridPane.rowIndex="2">
+            <Label styleClass="label-bright" text="E -mail :" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label text="Tel : " GridPane.rowIndex="3">
+            <Label styleClass="label-bright" text="Tel : " GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -133,7 +135,12 @@
             <TextField fx:id="telephoneField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <Button fx:id="ok" layoutX="242.0" layoutY="393.0" mnemonicParsing="false" onAction="#handleOkClient" prefHeight="25.0" prefWidth="96.0" text="OK" />
-      <Button fx:id="annuler" layoutX="369.0" layoutY="393.0" mnemonicParsing="false" onAction="#handleAnnulerClient" prefHeight="25.0" prefWidth="96.0" text="Annuler" />
+      <Button fx:id="ok" layoutX="247.0" layoutY="403.0" mnemonicParsing="false" onAction="#handleOkClient" prefHeight="33.0" prefWidth="118.0" text="OK" />
+      <Button fx:id="annuler" layoutX="374.0" layoutY="403.0" mnemonicParsing="false" onAction="#handleAnnulerClient" prefHeight="33.0" prefWidth="118.0" text="Annuler" />
+      <ImageView fitHeight="119.0" fitWidth="127.0" layoutX="14.0" layoutY="317.0">
+         <image>
+            <Image url="@../../../../../../Downloads/logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

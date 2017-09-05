@@ -339,6 +339,28 @@ public class ModifierPersonneController {
     	fenetreStage.close();
     }
     
+    
+    @FXML
+    private void handleAnnulerClientMod() 
+    {
+       
+    	fenetreStage.close();
+    }
+    
+    @FXML
+    private void handleAnnulerProspectMod() 
+    {
+    	
+    	fenetreStage.close();
+    }
+    
+    @FXML
+    private void handleAnnulerRepresentantMod() 
+    {
+    
+    	fenetreStage.close();
+    }
+    
     // Verifie que les entrees clavier sont correct
     private boolean isInputValidClient() 
     {

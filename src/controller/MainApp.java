@@ -267,7 +267,7 @@ public class MainApp extends Application {
 		{
 			FXMLLoader loader = new FXMLLoader();
 			
-			loader.setLocation(MainApp.class.getResource("view/ModifierClient.fxml"));
+			loader.setLocation(MainApp.class.getResource("view/ModClient.fxml"));
 			
 			AnchorPane fenetreModifierClient = (AnchorPane) loader.load();
 			
@@ -306,7 +306,7 @@ public class MainApp extends Application {
 		{
 			FXMLLoader loader = new FXMLLoader();
 			
-			loader.setLocation(MainApp.class.getResource("view/ModifierClient.fxml"));
+			loader.setLocation(MainApp.class.getResource("view/ModClient.fxml"));
 			
 			AnchorPane fenetreModifierClient = (AnchorPane) loader.load();
 			
@@ -344,7 +344,7 @@ public class MainApp extends Application {
 		{
 			FXMLLoader loader = new FXMLLoader();
 			
-			loader.setLocation(MainApp.class.getResource("view/ModifierProspect.fxml"));
+			loader.setLocation(MainApp.class.getResource("view/ModProspect.fxml"));
 			
 			AnchorPane fenetreModifierProspect = (AnchorPane) loader.load();
 			
@@ -382,7 +382,7 @@ public class MainApp extends Application {
 		{
 			FXMLLoader loader = new FXMLLoader();
 			
-			loader.setLocation(MainApp.class.getResource("view/ModifierRepresentant.fxml"));
+			loader.setLocation(MainApp.class.getResource("view/ModRepresentant.fxml"));
 			
 			AnchorPane fenetreModifierRepresentant = (AnchorPane) loader.load();
 			
@@ -401,6 +401,121 @@ public class MainApp extends Application {
 			controller.setFenetreStage(fenetreStage);
 			controller.setRepresentant(representant);
 			
+			// Montre la fenetre et attend que le user la ferme
+	        fenetreStage.showAndWait();
+
+	        return controller.isOkClicked();
+
+		}
+		catch ( IOException e)
+		{
+			 e.printStackTrace();
+			 return false;
+		}
+	}
+	
+	public boolean afficherFenetreAjouterRep(Representant representant)
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			
+			loader.setLocation(MainApp.class.getResource("view/AjoutRepresentant.fxml"));
+			
+			AnchorPane fenetreAjoutRep = (AnchorPane) loader.load();
+			
+			// creation du stage de la fenetre
+	        Stage fenetreStage = new Stage();
+	        
+	        fenetreStage.setTitle("Nouveau representant");
+	        fenetreStage.initModality(Modality.WINDOW_MODAL);
+	        fenetreStage.initOwner(stagePrincipal);
+	        
+	        Scene scene = new Scene(fenetreAjoutRep);
+	        fenetreStage.setScene(scene);
+
+			
+			ModifierPersonneController controller = loader.getController();
+			controller.setFenetreStage(fenetreStage);
+			controller.setRepresentant(representant);
+			
+			// Montre la fenetre et attend que le user la ferme
+	        fenetreStage.showAndWait();
+
+	        return controller.isOkClicked();
+
+		}
+		catch ( IOException e)
+		{
+			 e.printStackTrace();
+			 return false;
+		}
+	}
+	
+	public boolean afficherFenetreAjouterProspect(Prospect prospect)
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			
+			loader.setLocation(MainApp.class.getResource("view/AjoutProspect.fxml"));
+			
+			AnchorPane fenetreAjoutProspect = (AnchorPane) loader.load();
+			
+			// creation du stage de la fenetre
+	        Stage fenetreStage = new Stage();
+	        
+	        fenetreStage.setTitle("Nouveau prospect");
+	        fenetreStage.initModality(Modality.WINDOW_MODAL);
+	        fenetreStage.initOwner(stagePrincipal);
+	        
+	        Scene scene = new Scene(fenetreAjoutProspect);
+	        fenetreStage.setScene(scene);
+
+			
+			ModifierPersonneController controller = loader.getController();
+			controller.setFenetreStage(fenetreStage);
+			controller.setProspect(prospect);
+
+			// Montre la fenetre et attend que le user la ferme
+	        fenetreStage.showAndWait();
+
+	        return controller.isOkClicked();
+
+		}
+		catch ( IOException e)
+		{
+			 e.printStackTrace();
+			 return false;
+		}
+	}
+	
+	public boolean afficherFenetreAjouterClient(Client client)
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			
+			loader.setLocation(MainApp.class.getResource("view/AjoutClient.fxml"));
+			
+			AnchorPane fenetreAjoutClient = (AnchorPane) loader.load();
+			
+			// creation du stage de la fenetre
+	        Stage fenetreStage = new Stage();
+	        
+	        fenetreStage.setTitle("Nouveau client");
+	        fenetreStage.initModality(Modality.WINDOW_MODAL);
+	        fenetreStage.initOwner(stagePrincipal);
+	        
+	        Scene scene = new Scene(fenetreAjoutClient);
+	        fenetreStage.setScene(scene);
+
+			
+			ModifierPersonneController controller = loader.getController();
+			controller.setFenetreStage(fenetreStage);
+			controller.setClient(client);
+			controller.setMainApp(this);
+	
 			// Montre la fenetre et attend que le user la ferme
 	        fenetreStage.showAndWait();
 

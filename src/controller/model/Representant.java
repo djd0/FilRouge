@@ -35,7 +35,7 @@ public class Representant extends Personnes {
 		
 		this.salaire = new SimpleDoubleProperty(salaire);
 		
-		MainApp.donneesRepresentant.add(this);
+		
 		
 
 	}

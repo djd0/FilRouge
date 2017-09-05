@@ -89,7 +89,7 @@ public class ProspectController {
     {
         Prospect tempProspect = new Prospect();
         
-        boolean okClicked = mainApp.afficherFenetreModifierProspect(tempProspect);
+        boolean okClicked = mainApp.afficherFenetreAjouterProspect(tempProspect);
         
         if (okClicked) 
         {

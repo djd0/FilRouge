@@ -80,7 +80,8 @@ public class RepresentantController {
     @FXML
     private void handleSupprimer() 
     {
-        int selectedIndex = representantTable.getSelectionModel().getSelectedIndex();
+        
+    	int selectedIndex = representantTable.getSelectionModel().getSelectedIndex();
 
         representantTable.getItems().remove(selectedIndex);
        
@@ -92,7 +93,7 @@ public class RepresentantController {
     {
     	Representant tempRepresentant = new Representant();
         
-        boolean okClicked = mainApp.afficherFenetreModifierRepresentant(tempRepresentant);
+        boolean okClicked = mainApp.afficherFenetreAjouterRep(tempRepresentant);
         
         if (okClicked) 
         {

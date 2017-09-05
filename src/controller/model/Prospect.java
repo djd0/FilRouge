@@ -33,7 +33,7 @@ public class Prospect extends Personnes {
 			this.date = new SimpleObjectProperty<LocalDate>(date);
 			this.nbCommande = new SimpleIntegerProperty(0);
 			
-			MainApp.donneesProspect.add(this);
+		
 		}
 		
 

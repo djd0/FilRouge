@@ -19,9 +19,9 @@
    <children>
       <SplitPane dividerPositions="0.6240875912408759" layoutX="186.0" layoutY="118.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="498.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="498.0" styleClass="background" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css">
                <children>
-                  <GridPane layoutX="73.0" layoutY="139.0" prefHeight="131.0" prefWidth="293.0">
+                  <GridPane layoutX="22.0" layoutY="139.0" prefHeight="131.0" prefWidth="293.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="72.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="254.0" minWidth="0.0" prefWidth="228.0" />
@@ -33,22 +33,22 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Nom :">
+                        <Label styleClass="label-bright" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" text="Nom :">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label text="Prenom :" GridPane.rowIndex="1">
+                        <Label styleClass="label-bright" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" text="Prenom :" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label text="E-mail :" GridPane.rowIndex="2">
+                        <Label styleClass="label-bright" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" text="E-mail :" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label text="Tel :" GridPane.rowIndex="3">
+                        <Label styleClass="label-bright" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" text="Tel :" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -59,10 +59,10 @@
                         <Label fx:id="telephoneLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
-                  <Button fx:id="supprimer" layoutX="425.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleSupprimer" prefHeight="25.0" prefWidth="102.0" text="Supprimer" />
-                  <Button layoutX="299.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleModifierClient" prefHeight="25.0" prefWidth="102.0" text="Modifier" />
-                  <Button layoutX="171.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleNouveauClient" prefHeight="25.0" prefWidth="102.0" text="Ajouter" />
-                  <GridPane layoutX="305.0" layoutY="54.0" prefHeight="216.0" prefWidth="280.0">
+                  <Button fx:id="supprimer" layoutX="416.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleSupprimer" prefHeight="33.0" prefWidth="118.0" text="Supprimer" />
+                  <Button layoutX="290.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleModifierClient" prefHeight="33.0" prefWidth="118.0" text="Modifier" />
+                  <Button layoutX="162.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleNouveauClient" prefHeight="33.0" prefWidth="118.0" text="Ajouter" />
+                  <GridPane layoutX="268.0" layoutY="62.0" prefHeight="216.0" prefWidth="280.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="55.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.0" minWidth="10.0" prefWidth="188.0" />
@@ -77,17 +77,17 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Société :" GridPane.rowIndex="1">
+                        <Label styleClass="label-bright" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" text="Société :" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label text="Rue :" GridPane.rowIndex="6">
+                        <Label styleClass="label-bright" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" text="Rue :" GridPane.rowIndex="6">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label text="SIRET :" GridPane.rowIndex="2">
+                        <Label styleClass="label-bright" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" text="SIRET :" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -95,7 +95,7 @@
                         <Label fx:id="societeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="codePostalLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <Label fx:id="rueLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Label text="Pays :" GridPane.rowIndex="3">
+                        <Label styleClass="label-bright" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" text="Pays :" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -103,22 +103,22 @@
                         <Label fx:id="siretLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label fx:id="paysLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label fx:id="villeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label text="Ville :" GridPane.rowIndex="4">
+                        <Label styleClass="label-bright" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" text="Ville :" GridPane.rowIndex="4">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label text="Code postal :" GridPane.rowIndex="5">
+                        <Label styleClass="label-bright" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" text="Code postal :" GridPane.rowIndex="5">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="35.0" layoutY="27.0" prefHeight="90.0" prefWidth="228.0">
+                  <GridPane layoutX="22.0" layoutY="28.0" prefHeight="90.0" prefWidth="228.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0" prefWidth="155.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="45.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0" prefWidth="176.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="52.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints />
@@ -127,17 +127,17 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Numéro client :" GridPane.rowIndex="1">
+                        <Label styleClass="label-bright" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" text="Numéro client :" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label text="Numero représentant :" GridPane.rowIndex="2">
+                        <Label styleClass="label-bright" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" text="Numero représentant :" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label text="Nombre de commandes :" GridPane.rowIndex="3">
+                        <Label styleClass="label-bright" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" text="Nombre de commandes :" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -186,7 +186,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TableView fx:id="clientTable" layoutY="-13.0" prefHeight="201.0" prefWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="clientTable" layoutY="-13.0" prefHeight="201.0" prefWidth="498.0" stylesheets="@../../../../../../Downloads/DarkTheme%20(1).css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="nomColumn" prefWidth="146.0" text="Nom" />
                       <TableColumn fx:id="prenomColumn" minWidth="7.0" prefWidth="146.0" text="Prenom" />
