@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="FilRouge.jnlp">
+  <information>
+    <title>FilRouge</title>
+    <vendor>bilal.quentin</vendor>
+    <description>CentreDeGestionToutBois</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="FilRouge.jar" size="37273" download="eager" />
+    <jar href="libs\charm-glisten-4.3.7.jar" size="1028426" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="0" height="0" main-class="controller.MainApp"  name="CentreDeGestionToutBois" />
+  <update check="background"/>
+</jnlp>
